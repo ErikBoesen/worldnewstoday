@@ -1,5 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request, abort
-from werkzeug.urls import url_parse
+from flask import render_template, redirect, url_for, abort
 from app import app, db
 from app.forms import LinkForm
 from app.models import Link
@@ -17,7 +16,6 @@ def index():
 
         db.session.add(link)
         db.session.commit()
-        flash('Successfully created link ' + link.slug + '!')
         return redirect(url_for('index', slug=bot.slug))
     return render_template('index.html',
                            title='Create new link',
