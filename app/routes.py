@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, abort
+from flask import render_template, redirect, url_for
 from app import app, db
 from app.forms import LinkForm
 from app.models import Link
