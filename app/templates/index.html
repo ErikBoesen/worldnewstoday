@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+
+    {% with item = form.redirect_url %}{% include "_input.html" %}{% endwith %}
+    {% with item = form.title %}{% include "_input.html" %}{% endwith %}
+    {% with item = form.subtext %}{% include "_input.html" %}{% endwith %}
+    {% with item = form.image_url %}{% include "_input.html" %}{% endwith %}
+    {% with item = form.favicon_url %}{% include "_input.html" %}{% endwith %}
+
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}
