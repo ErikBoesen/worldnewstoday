@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ link.title }}</title>
+
+        <meta property="og:title" content="{{ link.title }}">
+        <meta property="og:description" content="{{ link.subtext}}">
+        <meta property="og:image" content="{{ link.image_url }}">
+        <meta http-equiv="refresh" content="0;URL='{{ link.redirect_url }}'">
+    </head>
+    <body>
+        {{ link.subtext }}
+    </body>
+</html>
