@@ -9,3 +9,5 @@ class Link(db.Model):
     subtext = db.Column(db.String)
     image_url = db.Column(db.String)
     favicon_url = db.Column(db.String)
+
+    uses = db.Column(db.Integer, default=0)
