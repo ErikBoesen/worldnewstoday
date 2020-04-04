@@ -13,17 +13,16 @@ def index():
                     subtext=form.subtext.data,
                     image_url=form.image_url.data,
                     favicon_url=form.favicon_url.data)
-        link.slug = link.title.lower().split()[:8]
+        link.slug = '-'.join(link.title.lower().split()[:8])
         db.session.add(link)
         db.session.commit()
-        return redirect(url_for('index', slug=bot.slug))
+        return render_template('index.html',
+                                url=url_for('do_redirect', _external=True, slug=link.slug))
     return render_template('index.html',
                            form=form)
 
 
 @app.route('/article/<slug>')
-def do_redirect():
-    link = Link.filter_by(slug=slug).first_or_404()
-    link.uses += 1
-    db.session.commit()
+def do_redirect(slug):
+    link = Link.query.filter_by(slug=slug).first_or_404()
     return render_template('redirect.html', link=link)
