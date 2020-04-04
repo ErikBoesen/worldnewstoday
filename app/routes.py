@@ -16,6 +16,7 @@ def index():
         link.slug = '-'.join(link.title.lower().split()[:8])
         db.session.add(link)
         db.session.commit()
+        db.session.close()
         return render_template('index.html',
                                 url=url_for('do_redirect', _external=True, slug=link.slug))
     return render_template('index.html',
@@ -25,4 +26,5 @@ def index():
 @app.route('/article/<slug>')
 def do_redirect(slug):
     link = Link.query.filter_by(slug=slug).first_or_404()
+    db.session.close()
     return render_template('redirect.html', link=link)
