@@ -8,11 +8,11 @@ from app.models import Link
 def index():
     form = LinkForm()
     if form.validate_on_submit():
-        link = Link(redirect_url=form.url_redirect.data,
+        link = Link(redirect_url=form.redirect_url.data,
                     title=form.title.data,
                     subtext=form.subtext.data,
                     image_url=form.image_url.data,
-                    favicon_url=form.favicon_url.data,
+                    favicon_url=form.favicon_url.data)
         link.slug = link.title.lower().split()[:8]
         db.session.add(link)
         db.session.commit()
