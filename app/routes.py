@@ -16,7 +16,6 @@ def index():
         link.slug = '-'.join(link.title.lower().split()[:8])
         db.session.add(link)
         db.session.commit()
-        db.session.close()
         return render_template('index.html',
                                 url=url_for('do_redirect', _external=True, slug=link.slug))
     return render_template('index.html',
